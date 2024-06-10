@@ -1,0 +1,149 @@
+[
+  {
+    "objectID": "paper.html",
+    "href": "paper.html",
+    "title": "",
+    "section": "",
+    "text": "This is a placeholder for a paper."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "",
+    "section": "",
+    "text": "Welcome to future-proof transport planning!"
+  },
+  {
+    "objectID": "slides.html#about-me-and-my-work",
+    "href": "slides.html#about-me-and-my-work",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "About me and my work",
+    "text": "About me and my work\n\n\n\n\nAssociate Professor of Transport Data Science\nWork with government\nFocus on impact\nSoftware developer and data scientist\nNew methods for more reproducible, data-driven and participatory transport planning"
+  },
+  {
+    "objectID": "slides.html#contents",
+    "href": "slides.html#contents",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "Contents",
+    "text": "Contents\n\n\nDefinitions: what is reproducible research and future proof transport planning?\nReproducible research and open tools\nFuture-proof transport planning"
+  },
+  {
+    "objectID": "slides.html#definitions",
+    "href": "slides.html#definitions",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "Definitions",
+    "text": "Definitions\n\na tool is a … piece of software or online service; a model … is method or process that is expounded in theoretical terms; software is … instructions that underlies digital tools Lovelace (2021)\n\nReproducible research: Other people can re-generate your results\n\nOpen source software: Software that is free to use and modify\n\n\nOpen access tools: Web applications for transport planning that are based on open source software, that anyone can use\n\n\nOpen access data: Data that is freely available to use and share\n\n\nFuture-proof work that is likely to be useful in the medium-term future"
+  },
+  {
+    "objectID": "slides.html#reproducibility",
+    "href": "slides.html#reproducibility",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "Reproducibility",
+    "text": "Reproducibility\nReproducibility is a continuous variable (Peng 2011)"
+  },
+  {
+    "objectID": "slides.html#why-make-your-research-more-reproducible",
+    "href": "slides.html#why-make-your-research-more-reproducible",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "Why make your research (more) reproducible?",
+    "text": "Why make your research (more) reproducible?\n\n\n\nSource: Raff (2023)\n\n\n\nScientific rigour\nBenefits to your future self\nBenefits to others\nHuge increase in potential for impact"
+  },
+  {
+    "objectID": "slides.html#why-not-make-your-research-reproducible",
+    "href": "slides.html#why-not-make-your-research-reproducible",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "Why not make your research reproducible?",
+    "text": "Why not make your research reproducible?\n\n\n\n\n\nTime\nKnow-how\nLack of permission\nSoftware is not open\nData is not open access\nSomeone might use it in unethical ways\nSomeone might “steal” the work"
+  },
+  {
+    "objectID": "slides.html#example-of-fully-reproducible-research",
+    "href": "slides.html#example-of-fully-reproducible-research",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "Example of fully reproducible research",
+    "text": "Example of fully reproducible research\n\nLovelace, Tennekes, and Carlino (2022)"
+  },
+  {
+    "objectID": "slides.html#reproducibility-and-generalisability",
+    "href": "slides.html#reproducibility-and-generalisability",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "Reproducibility and generalisability",
+    "text": "Reproducibility and generalisability\n\nIllustration of the ClockBoard zoning system used to visualize a geographically dependendent phenomena: air quality, measured in mass of PM10 particles, measured in micrograms per cubic meter, from the London Atmospheric Emissions Inventory (LAEI). The facets show the data in spatial grid available from the LAEI, facet Am and aggregated to London boroughs B, to ClockBoard zones covering all the input data shown in C, and ClockBoard zones clipped by the administrative boundary of Greater London in D."
+  },
+  {
+    "objectID": "slides.html#application-road-traffic-casualties",
+    "href": "slides.html#application-road-traffic-casualties",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "Application: road traffic casualties",
+    "text": "Application: road traffic casualties"
+  },
+  {
+    "objectID": "slides.html#international-comparisons",
+    "href": "slides.html#international-comparisons",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "International comparisons",
+    "text": "International comparisons\n\n\n\n\nPremise: A key reason for reproducibility is generalisability."
+  },
+  {
+    "objectID": "slides.html#drivers-of-demand-for-transport-planning",
+    "href": "slides.html#drivers-of-demand-for-transport-planning",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "Drivers of demand for transport planning",
+    "text": "Drivers of demand for transport planning\ntransport planning software was originally designed in the late 1950s and onwards to plan for\n\nincreased use of cars [for personal travel], and trucks for deliveries and goods movement Boyce and Williams (2015)\n\nThankfully that is no longer a priority:\n\nPolicy drivers have changed dramatically since then: climate change mitigation, air quality improvement and public health are prioritised in the emergent ‘sustainable mobility paradigm’ Lovelace (2021)\n\nHow could/should/will demand shift in the future?"
+  },
+  {
+    "objectID": "slides.html#ai-takeover",
+    "href": "slides.html#ai-takeover",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "AI takeover?",
+    "text": "AI takeover?"
+  },
+  {
+    "objectID": "slides.html#where-are-we-headed-with-ai",
+    "href": "slides.html#where-are-we-headed-with-ai",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "Where are we headed with AI?",
+    "text": "Where are we headed with AI?\n\nSource: https://situational-awareness.ai"
+  },
+  {
+    "objectID": "slides.html#the-limits-of-ai",
+    "href": "slides.html#the-limits-of-ai",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "The limits of AI",
+    "text": "The limits of AI\n\n(Nezhurina et al., n.d.)"
+  },
+  {
+    "objectID": "slides.html#environmental-costs-of-ai",
+    "href": "slides.html#environmental-costs-of-ai",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "Environmental costs of ‘AI’",
+    "text": "Environmental costs of ‘AI’\n\n\n\n\n\nIT sector was already poised to become a decarbonisation bottleneck\n\n\n\nSource: theregister.com and Gupta et al. (2021)"
+  },
+  {
+    "objectID": "slides.html#factoring-in-build-out-of-ai-data-centres",
+    "href": "slides.html#factoring-in-build-out-of-ai-data-centres",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "Factoring-in build-out of AI data centres",
+    "text": "Factoring-in build-out of AI data centres"
+  },
+  {
+    "objectID": "slides.html#conclusions",
+    "href": "slides.html#conclusions",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "Conclusions",
+    "text": "Conclusions\n\nReproducible research is a key part of future-proofing transport planning, for your work, and for the discipline as a whole\nOpen source software and open access tools are key to this, especially if you want to have humans in the loop\nAI is not a panacea, and has its own environmental costs\nIn this context, there are some key desirable features of future-proof transport models and associated software and tools:\n\nOpen source\nOpen access\nReproducible\nHuman-in-the-loop\nEasily adaptable to new data sources, methods, and demands"
+  },
+  {
+    "objectID": "slides.html#references",
+    "href": "slides.html#references",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "References",
+    "text": "References\n\n\nBoyce, David E., and Huw C. W. L. Williams. 2015. Forecasting Urban Travel: Past, Present and Future. Edward Elgar Publishing.\n\n\nGupta, Udit, Young Geun Kim, Sylvia Lee, Jordan Tse, Hsien-Hsin S. Lee, Gu-Yeon Wei, David Brooks, and Carole-Jean Wu. 2021. “2021 IEEE International Symposium on High-Performance Computer Architecture (HPCA).” In, 854–67. https://doi.org/10.1109/HPCA51647.2021.00076.\n\n\nLovelace, Robin. 2021. “Open Source Tools for Geographic Analysis in Transport Planning.” Journal of Geographical Systems, January. https://doi.org/10.1007/s10109-020-00342-2.\n\n\nLovelace, Robin, Martijn Tennekes, and Dustin Carlino. 2022. “ClockBoard: A Zoning System for Urban Analysis.” Journal of Spatial Information Science, no. 24 (June): 63–85. https://doi.org/10.5311/JOSIS.2022.24.172.\n\n\nNezhurina, Marianna, Lucia Cipolina-Kun, Mehdi Cherti, and Jenia Jitsev. n.d. “Alice in Wonderland: Simple Tasks Showing Complete Reasoning Breakdown in State-Of-the-Art Large Language Models.”\n\n\nPeng, Roger D. 2011. “Reproducible Research in Computational Science.” Science (New York, N.y.) 334 (6060): 1226–27. https://doi.org/10.1126/science.1213847.\n\n\nRaff, Edward. 2023. “Does the Market of Citations Reward Reproducible Work?” In, 8996. ACM REP ’23. New York, NY, USA: Association for Computing Machinery. https://doi.org/10.1145/3589806.3600041."
+  },
+  {
+    "objectID": "slides.html#sec-appendix",
+    "href": "slides.html#sec-appendix",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "Appendix: What if the machines do take over?",
+    "text": "Appendix: What if the machines do take over?\n\nWould you want the AIs to be trained on your work?\n\nInitial thought: no way, that’s my data!\nSecond thought: if the AIs are going to take over, they might as well be well-informed, by good information and good intentions!\n\nWould you want to be able to understand how the AIs work?"
+  }
+]
