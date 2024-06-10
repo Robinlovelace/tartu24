@@ -16,6 +16,3 @@ website:
         href: slides.qmd
       - text: "Paper"
         href: paper.qmd 
-
-execute:
-  freeze: auto
