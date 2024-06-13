@@ -7,6 +7,13 @@
     "text": "This is a placeholder for a paper."
   },
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Future-proof transport planning",
+    "section": "",
+    "text": "The materials here support a talk at the Mobile Tartu conference 2024.\nSee the slides in the notes.\nThe talk advocates reproducible research with open source software as a strategy for future-proof transport planning. Practicing what I preach, the slides are fully reproducible. See the source code at github.com/robinlovelace."
+  },
+  {
     "objectID": "slides.html#about-me-and-my-work",
     "href": "slides.html#about-me-and-my-work",
     "title": "Reproducible research and open tools for future-proof transport planning",
