@@ -91,11 +91,102 @@
     "text": "Don’t reinvent the wheel\n\n\nBefore\n\noptions(timeout = 600) # 10 minutes\nu1 = \"https://movilidad-opendata.mitma.es/estudios_basicos/por-distritos/viajes/ficheros-diarios/2024-03/20240301_Viajes_distritos.csv.gz\"\nf1 = basename(u1)\nif (!file.exists(f1)) {\n  download.file(u1, f1)\n}\ndrv = duckdb::duckdb(\"daily.duckdb\")\ncon = DBI::dbConnect(drv)\nod1 = duckdb::tbl_file(con, f1)\n\nCredit: Egor Kotov\n\n\nremotes::install_github(\"Robinlovelace/spanishoddata\")\nod_multi_list = get_od(date_regex = \"2024030[1-7]\")\n# ...\nn_per_hour |&gt;\n  ggplot(aes(x = Time, y = Trips)) +\n  geom_line(aes(colour = Day)) +\n  labs(title = \"Number of trips per hour over 7 days\")"
   },
   {
+    "objectID": "slides.html#re-using-existing-tools",
+    "href": "slides.html#re-using-existing-tools",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "Re-using existing tools",
+    "text": "Re-using existing tools\n\n\n\n# Process the data\nod_large = od_database |&gt;\n  group_by(origen, destino) |&gt;\n  summarise(Trips = sum(viajes), .groups = \"drop\") |&gt;\n  filter(Trips &gt; 500) |&gt;\n  collect() |&gt;\n  arrange(desc(Trips))\n# ℹ 37,013 more rows\n# Convert to geo with {od} package:\nod_large_interzonal_sf = od::od_to_sf(\n  od_large_interzonal,\n  z = distritos_wgs84\n)\nod_large_interzonal_sf |&gt;\n  ggplot() +\n  geom_sf(aes(size = Trips), colour = \"red\") +\n  theme_void()"
+  },
+  {
+    "objectID": "slides.html#zooming-in",
+    "href": "slides.html#zooming-in",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "Zooming in",
+    "text": "Zooming in\n\ndistritos = get_zones(type = \"distritos\")\ndistritos_wgs84 = sf::st_transform(distritos, 4326)\nsalamanca_zones = zonebuilder::zb_zone(\"Salamanca\")\ndistritos_salamanca = distritos_wgs84[salamanca_zones, ]\nplot(distritos_salamanca)"
+  },
+  {
+    "objectID": "slides.html#subsetting-from-the-database",
+    "href": "slides.html#subsetting-from-the-database",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "Subsetting from the database",
+    "text": "Subsetting from the database\n\n\n\nod_salamanca = od_database |&gt;\n  filter(origen %in% ids_salamanca) |&gt;\n  filter(destino %in% ids_salamanca) |&gt;\n  collect()\n  group_by(origen, destino) |&gt;\n  summarise(Trips = sum(viajes)) |&gt;\n  arrange(Trips)\nod_salamanca_sf = od::od_to_sf(\n  od_salamanca,\n  z = distritos_salamanca\n)\nod_salamanca_sf |&gt;\n  filter(origen != destino) |&gt;\n  ggplot() +\n  geom_sf(aes(colour = Trips), size = 1) +\n  scale_colour_viridis_c() +\n  theme_void()"
+  },
+  {
+    "objectID": "slides.html#spatial-disaggregation",
+    "href": "slides.html#spatial-disaggregation",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "Spatial disaggregation",
+    "text": "Spatial disaggregation\n\n\n\nod_jittered = odjitter::jitter(\n  od_salamanca_sf,\n  zones = distritos_salamanca,\n  subpoints = drive_net,\n  disaggregation_threshold = 1000,\n  disaggregation_key = \"Trips\"\n)\nod_jittered |&gt;\n  arrange(Trips) |&gt;\n  ggplot() +\n  geom_sf(aes(colour = Trips), size = 1) +\n  scale_colour_viridis_c() +\n  geom_sf(data = drive_net_major, colour = \"black\") +\n  theme_void()"
+  },
+  {
+    "objectID": "slides.html#how-does-spatial-disaggregation-jittering-work",
+    "href": "slides.html#how-does-spatial-disaggregation-jittering-work",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "How does spatial disaggregation (jittering) work?",
+    "text": "How does spatial disaggregation (jittering) work?\n\nSource: (Lovelace, Félix, and Carlino 2022)"
+  },
+  {
+    "objectID": "slides.html#origin-and-end-point-randomisation-disaggregation",
+    "href": "slides.html#origin-and-end-point-randomisation-disaggregation",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "Origin and end point randomisation + disaggregation",
+    "text": "Origin and end point randomisation + disaggregation\n\nSource: (Lovelace, Félix, and Carlino 2022)"
+  },
+  {
+    "objectID": "slides.html#cross-language-collaboration",
+    "href": "slides.html#cross-language-collaboration",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "Cross-language collaboration",
+    "text": "Cross-language collaboration\n\nSource: https://github.com/dabreegster/odjitter"
+  },
+  {
+    "objectID": "slides.html#from-open-source-to-open-access",
+    "href": "slides.html#from-open-source-to-open-access",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "From open source to open access",
+    "text": "From open source to open access\n\n\n\n“In essence ‘open access’ goes beyond ‘open source’ in that users are not only given the option of viewing (potentially indecipherable) source code, but are encouraged to do so, with measures taken in the software itself, and the community that builds it, to make it more user-friendly.””\nSource: (Lovelace, Parkin, and Cohen 2020)"
+  },
+  {
+    "objectID": "slides.html#from-methodssoftware-development-to-impact",
+    "href": "slides.html#from-methodssoftware-development-to-impact",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "From methods/software development to impact",
+    "text": "From methods/software development to impact\n\nSource: screenshot from development version of open source and open access Network Planning Tools for Scotland: https://nptscot.github.io/#/rnet/#9.29/55.9882/-3.4379"
+  },
+  {
     "objectID": "slides.html#drivers-of-demand-for-transport-planning",
     "href": "slides.html#drivers-of-demand-for-transport-planning",
     "title": "Reproducible research and open tools for future-proof transport planning",
     "section": "Drivers of demand for transport planning",
     "text": "Drivers of demand for transport planning\ntransport planning software was originally designed in the late 1950s and onwards to plan for\n\nincreased use of cars [for personal travel], and trucks for deliveries and goods movement Boyce and Williams (2015)\n\nThankfully that is no longer a priority:\n\nPolicy drivers have changed dramatically since then: climate change mitigation, air quality improvement and public health are prioritised in the emergent ‘sustainable mobility paradigm’ Lovelace (2021)\n\nHow could/should/will demand shift in the future?"
+  },
+  {
+    "objectID": "slides.html#future-proofing-workflows",
+    "href": "slides.html#future-proofing-workflows",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "Future-proofing workflows",
+    "text": "Future-proofing workflows\nAvoid stranded assets (tech debt)\n\nSource: Semieniuk et al. (2022)"
+  },
+  {
+    "objectID": "slides.html#conclusions",
+    "href": "slides.html#conclusions",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "Conclusions",
+    "text": "Conclusions\n\nReproducible research is a key part of future-proofing transport planning, for your work, and for the discipline as a whole\nOpen source software and open access tools are key to this, especially if you want to have humans in the loop\nAI is not a panacea, and has its own environmental costs\nIn this context, there are some key desirable features of future-proof transport models and associated software and tools:\n\nOpen source\nOpen access\nReproducible\nHuman-in-the-loop\nEasily adaptable to new data sources, methods, and demands"
+  },
+  {
+    "objectID": "slides.html#references",
+    "href": "slides.html#references",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "References",
+    "text": "References\n\n\nBoyce, David E., and Huw C. W. L. Williams. 2015. Forecasting Urban Travel: Past, Present and Future. Edward Elgar Publishing.\n\n\nLovelace, Robin. 2021. “Open Source Tools for Geographic Analysis in Transport Planning.” Journal of Geographical Systems, January. https://doi.org/10.1007/s10109-020-00342-2.\n\n\nLovelace, Robin, Rosa Félix, and Dustin Carlino. 2022. “Jittering: A Computationally Efficient Method for Generating Realistic Route Networks from Origin-Destination Data.” Findings, April, 33873. https://doi.org/10.32866/001c.33873.\n\n\nLovelace, Robin, John Parkin, and Tom Cohen. 2020. “Open Access Transport Models: A Leverage Point in Sustainable Transport Planning.” Transport Policy 97 (October): 47–54. https://doi.org/10.1016/j.tranpol.2020.06.015.\n\n\nLovelace, Robin, Martijn Tennekes, and Dustin Carlino. 2022. “ClockBoard: A Zoning System for Urban Analysis.” Journal of Spatial Information Science, no. 24 (June): 63–85. https://doi.org/10.5311/JOSIS.2022.24.172.\n\n\nPeng, Roger D. 2011. “Reproducible Research in Computational Science.” Science (New York, N.y.) 334 (6060): 1226–27. https://doi.org/10.1126/science.1213847.\n\n\nRaff, Edward. 2023. “Does the Market of Citations Reward Reproducible Work?” In, 8996. ACM REP ’23. New York, NY, USA: Association for Computing Machinery. https://doi.org/10.1145/3589806.3600041.\n\n\nSemieniuk, Gregor, Philip B. Holden, Jean-Francois Mercure, Pablo Salas, Hector Pollitt, Katharine Jobson, Pim Vercoulen, Unnada Chewpreecha, Neil R. Edwards, and Jorge E. Viñuales. 2022. “Stranded Fossil-Fuel Assets Translate to Major Losses for Investors in Advanced Economies.” Nature Climate Change 12 (6): 532–38. https://doi.org/10.1038/s41558-022-01356-y."
+  },
+  {
+    "objectID": "slides.html#sec-appendix",
+    "href": "slides.html#sec-appendix",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "Appendix: What if the machines do take over?",
+    "text": "Appendix: What if the machines do take over?\n\nWould you want the AIs to be trained on your work?\n\nInitial thought: no way, that’s my data!\nSecond thought: if the AIs are going to take over, they might as well be well-informed, by good information and good intentions!\n\nWould you want to be able to understand how the AIs work?"
   },
   {
     "objectID": "slides.html#ai-takeover",
@@ -116,14 +207,14 @@
     "href": "slides.html#the-limits-of-ai",
     "title": "Reproducible research and open tools for future-proof transport planning",
     "section": "The limits of AI",
-    "text": "The limits of AI\n\n(Nezhurina et al., n.d.)"
+    "text": "The limits of AI\n\nNezhurina (N.D.)"
   },
   {
     "objectID": "slides.html#environmental-costs-of-ai",
     "href": "slides.html#environmental-costs-of-ai",
     "title": "Reproducible research and open tools for future-proof transport planning",
     "section": "Environmental costs of ‘AI’",
-    "text": "Environmental costs of ‘AI’\n\n\n\n\n\nIT sector was already poised to become a decarbonisation bottleneck\n\n\n\nSource: theregister.com and Gupta et al. (2021)"
+    "text": "Environmental costs of ‘AI’\n\n\n\n\n\nIT sector was already poised to become a decarbonisation bottleneck\n\n\n\nSource: theregister.com and Gupta et al. (2021)"
   },
   {
     "objectID": "slides.html#factoring-in-build-out-of-ai-data-centres",
@@ -131,26 +222,5 @@
     "title": "Reproducible research and open tools for future-proof transport planning",
     "section": "Factoring-in build-out of AI data centres",
     "text": "Factoring-in build-out of AI data centres"
-  },
-  {
-    "objectID": "slides.html#conclusions",
-    "href": "slides.html#conclusions",
-    "title": "Reproducible research and open tools for future-proof transport planning",
-    "section": "Conclusions",
-    "text": "Conclusions\n\nReproducible research is a key part of future-proofing transport planning, for your work, and for the discipline as a whole\nOpen source software and open access tools are key to this, especially if you want to have humans in the loop\nAI is not a panacea, and has its own environmental costs\nIn this context, there are some key desirable features of future-proof transport models and associated software and tools:\n\nOpen source\nOpen access\nReproducible\nHuman-in-the-loop\nEasily adaptable to new data sources, methods, and demands"
-  },
-  {
-    "objectID": "slides.html#references",
-    "href": "slides.html#references",
-    "title": "Reproducible research and open tools for future-proof transport planning",
-    "section": "References",
-    "text": "References\n\n\nBoyce, David E., and Huw C. W. L. Williams. 2015. Forecasting Urban Travel: Past, Present and Future. Edward Elgar Publishing.\n\n\nGupta, Udit, Young Geun Kim, Sylvia Lee, Jordan Tse, Hsien-Hsin S. Lee, Gu-Yeon Wei, David Brooks, and Carole-Jean Wu. 2021. “2021 IEEE International Symposium on High-Performance Computer Architecture (HPCA).” In, 854–67. https://doi.org/10.1109/HPCA51647.2021.00076.\n\n\nLovelace, Robin. 2021. “Open Source Tools for Geographic Analysis in Transport Planning.” Journal of Geographical Systems, January. https://doi.org/10.1007/s10109-020-00342-2.\n\n\nLovelace, Robin, Martijn Tennekes, and Dustin Carlino. 2022. “ClockBoard: A Zoning System for Urban Analysis.” Journal of Spatial Information Science, no. 24 (June): 63–85. https://doi.org/10.5311/JOSIS.2022.24.172.\n\n\nNezhurina, Marianna, Lucia Cipolina-Kun, Mehdi Cherti, and Jenia Jitsev. n.d. “Alice in Wonderland: Simple Tasks Showing Complete Reasoning Breakdown in State-Of-the-Art Large Language Models.”\n\n\nPeng, Roger D. 2011. “Reproducible Research in Computational Science.” Science (New York, N.y.) 334 (6060): 1226–27. https://doi.org/10.1126/science.1213847.\n\n\nRaff, Edward. 2023. “Does the Market of Citations Reward Reproducible Work?” In, 8996. ACM REP ’23. New York, NY, USA: Association for Computing Machinery. https://doi.org/10.1145/3589806.3600041."
-  },
-  {
-    "objectID": "slides.html#sec-appendix",
-    "href": "slides.html#sec-appendix",
-    "title": "Reproducible research and open tools for future-proof transport planning",
-    "section": "Appendix: What if the machines do take over?",
-    "text": "Appendix: What if the machines do take over?\n\nWould you want the AIs to be trained on your work?\n\nInitial thought: no way, that’s my data!\nSecond thought: if the AIs are going to take over, they might as well be well-informed, by good information and good intentions!\n\nWould you want to be able to understand how the AIs work?"
   }
 ]
