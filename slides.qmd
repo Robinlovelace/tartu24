@@ -84,7 +84,7 @@ library(tibble)
 
 <!-- (10 years+), regardless of (political, economic, technological) changes -->
 
-## Reproducibility
+## (I-)Reproducibility
 
 Reproducibility is a continuous variable [@peng2011]
 
@@ -94,32 +94,22 @@ Reproducibility is a continuous variable [@peng2011]
 
 ## Why make your research (more) reproducible?
 
-:::: columns
-
+::: columns
 ::: {.column width="80%"}
-
 ![](images/paste-36.png)
 
 Source: @raff2023
-
 :::
 
 ::: {.column width="20%"}
-
-::: {.incremental}
-
-- Scientific rigour
-- Benefits to your future self
-- Benefits to others
-- Huge increase in potential for impact
-
+::: incremental
+-   Scientific rigour
+-   Benefits to your future self
+-   Benefits to others
+-   Huge increase in potential for impact
 :::
-
 :::
-
-::::
-
-
+:::
 
 ## Why *not* make your research reproducible?
 
@@ -175,6 +165,54 @@ The facets show the data in spatial grid available from the LAEI, facet Am and a
 :::
 
 # Open source software and open access tools
+
+## Case study: mobile telephone data in Spain
+
+![](images/paste-1.png)
+
+## Don't reinvent the wheel
+
+::: columns
+::: {.column width="40%"}
+### Before
+
+```{r}
+#| eval: false
+#| echo: true
+options(timeout = 600) # 10 minutes
+u1 = "https://movilidad-opendata.mitma.es/estudios_basicos/por-distritos/viajes/ficheros-diarios/2024-03/20240301_Viajes_distritos.csv.gz"
+f1 = basename(u1)
+if (!file.exists(f1)) {
+  download.file(u1, f1)
+}
+drv = duckdb::duckdb("daily.duckdb")
+con = DBI::dbConnect(drv)
+od1 = duckdb::tbl_file(con, f1)
+```
+
+Credit: [Egor Kotov](https://github.com/Robinlovelace/spanishoddata/blob/main/draft-code/001-convert-to-clean-data.r)
+:::
+
+::: {.column width="60%"}
+
+```{r}
+#| eval: false
+#| echo: true
+remotes::install_github("Robinlovelace/spanishoddata")
+od_multi_list = get_od(date_regex = "2024030[1-7]")
+# ...
+n_per_hour |>
+  ggplot(aes(x = Time, y = Trips)) +
+  geom_line(aes(colour = Day)) +
+  labs(title = "Number of trips per hour over 7 days")
+```
+
+![](images/paste-2.png)
+
+
+:::
+:::
+
 
 # Future-proof transport planning {background-image="images/paste-35.png" background-opacity="0.5"}
 
