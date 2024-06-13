@@ -357,6 +357,17 @@ Source: [@lovelace2020]
 
 Source: screenshot from development version of open source and open access Network Planning Tools for Scotland: [https://nptscot.github.io/#/rnet/#9.29/55.9882/-3.4379](https://nptscot.github.io/#/rnet/#9.29/55.9882/-3.4379)
 
+## Rapid feedback loops and interactivity
+
+![Illustration of od2net client-side network generator (source: od2net.org)](images/od2net.gif)
+
+## Enabling participation
+
+![](images/atip-poly.gif)
+
+Source: [acteng.github.io](https://acteng.github.io/atip/pipeline/scheme.html?authority=LAD_Leeds&schema=pipeline&style=streets#13.6/53.82231/-1.51541).
+Credit: Dustin Carlino (Alan Turing Institute and Active Travel England) and colleagues in ATE.
+
 # Future-proof transport planning {background-image="images/paste-35.png" background-opacity="0.5"}
 
 <!-- ![](images/paste-35.png) -->
