@@ -28,11 +28,11 @@
     "text": "Definitions\n\na tool is a … piece of software or online service; a model … is method or process that is expounded in theoretical terms; software is … instructions that underlies digital tools Lovelace (2021)\n\nReproducible research: Other people can re-generate your results\n\nOpen source software: Software that is free to use and modify\n\n\nOpen access tools: Web applications for transport planning that are based on open source software, that anyone can use\n\n\nOpen access data: Data that is freely available to use and share\n\n\nFuture-proof work that is likely to be useful in the medium-term future"
   },
   {
-    "objectID": "slides.html#reproducibility",
-    "href": "slides.html#reproducibility",
+    "objectID": "slides.html#i-reproducibility",
+    "href": "slides.html#i-reproducibility",
     "title": "Reproducible research and open tools for future-proof transport planning",
-    "section": "Reproducibility",
-    "text": "Reproducibility\nReproducibility is a continuous variable (Peng 2011)"
+    "section": "(I-)Reproducibility",
+    "text": "(I-)Reproducibility\nReproducibility is a continuous variable (Peng 2011)"
   },
   {
     "objectID": "slides.html#why-make-your-research-more-reproducible",
@@ -75,6 +75,20 @@
     "title": "Reproducible research and open tools for future-proof transport planning",
     "section": "International comparisons",
     "text": "International comparisons\n\n\n\n\nPremise: A key reason for reproducibility is generalisability."
+  },
+  {
+    "objectID": "slides.html#case-study-mobile-telephone-data-in-spain",
+    "href": "slides.html#case-study-mobile-telephone-data-in-spain",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "Case study: mobile telephone data in Spain",
+    "text": "Case study: mobile telephone data in Spain"
+  },
+  {
+    "objectID": "slides.html#dont-reinvent-the-wheel",
+    "href": "slides.html#dont-reinvent-the-wheel",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "Don’t reinvent the wheel",
+    "text": "Don’t reinvent the wheel\n\n\nBefore\n\noptions(timeout = 600) # 10 minutes\nu1 = \"https://movilidad-opendata.mitma.es/estudios_basicos/por-distritos/viajes/ficheros-diarios/2024-03/20240301_Viajes_distritos.csv.gz\"\nf1 = basename(u1)\nif (!file.exists(f1)) {\n  download.file(u1, f1)\n}\ndrv = duckdb::duckdb(\"daily.duckdb\")\ncon = DBI::dbConnect(drv)\nod1 = duckdb::tbl_file(con, f1)\n\nCredit: Egor Kotov\n\n\nremotes::install_github(\"Robinlovelace/spanishoddata\")\nod_multi_list = get_od(date_regex = \"2024030[1-7]\")\n# ...\nn_per_hour |&gt;\n  ggplot(aes(x = Time, y = Trips)) +\n  geom_line(aes(colour = Day)) +\n  labs(title = \"Number of trips per hour over 7 days\")"
   },
   {
     "objectID": "slides.html#drivers-of-demand-for-transport-planning",
