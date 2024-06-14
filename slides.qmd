@@ -386,6 +386,30 @@ Thankfully that is no longer a priority:
 
 How could/should/will demand shift in the future?
 
+## Stages of open and reproducible science
+
+::: {.columns}
+::: {.column width="30%"}
+
+1.  Open access to the publications
+
+2.  Open access to sample (synthetic if sensitive) data
+
+3.  Open access to the code
+
+4.  Fully reproducible paper published with documentation
+
+5.  Project deployed in tool for non-specialist use
+
+
+:::
+::: {.column width="70%"}
+
+![](images/paste-12.png)
+
+:::
+:::
+
 ## Future-proofing workflows
 
 ### Avoid stranded assets (tech debt)
