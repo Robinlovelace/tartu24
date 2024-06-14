@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "Future-proof transport planning",
     "section": "",
-    "text": "The materials here support a talk at the Mobile Tartu conference 2024.\nSee the slides in the notes.\nThe talk advocates reproducible research with open source software as a strategy for future-proof transport planning. Practicing what I preach, the slides are fully reproducible. See the source code at github.com/robinlovelace."
+    "text": "The materials here support a talk at the Mobile Tartu conference 2024.\nSee the slides in the link.\nThe talk advocates reproducible research with open source software as a strategy for future-proof transport planning. Practicing what I preach, the slides are fully reproducible. See the source code at github.com/robinlovelace."
   },
   {
     "objectID": "slides.html#about-me-and-my-work",
@@ -180,6 +180,13 @@
     "title": "Reproducible research and open tools for future-proof transport planning",
     "section": "Drivers of demand for transport planning",
     "text": "Drivers of demand for transport planning\ntransport planning software was originally designed in the late 1950s and onwards to plan for\n\nincreased use of cars [for personal travel], and trucks for deliveries and goods movement Boyce and Williams (2015)\n\nThankfully that is no longer a priority:\n\nPolicy drivers have changed dramatically since then: climate change mitigation, air quality improvement and public health are prioritised in the emergent ‘sustainable mobility paradigm’ Lovelace (2021)\n\nHow could/should/will demand shift in the future?"
+  },
+  {
+    "objectID": "slides.html#stages-of-open-and-reproducible-science",
+    "href": "slides.html#stages-of-open-and-reproducible-science",
+    "title": "Reproducible research and open tools for future-proof transport planning",
+    "section": "Stages of open and reproducible science",
+    "text": "Stages of open and reproducible science\n\n\n\nOpen access to the publications\nOpen access to sample (synthetic if sensitive) data\nOpen access to the code\nFully reproducible paper published with documentation\nProject deployed in tool for non-specialist use"
   },
   {
     "objectID": "slides.html#future-proofing-workflows",
